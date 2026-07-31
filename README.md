@@ -192,7 +192,7 @@ Restart ComfyUI and force-refresh the browser with `Ctrl + F5` after updating th
 
 ## Workflow compatibility
 
-Character Architect visually reorganizes widgets into sections, while ComfyUI stores widget values positionally. The frontend serializes values in the backend schema's canonical order and includes migration maps for earlier canonical and visually reordered releases. Existing `mediterranean` and `latina` values migrate to `southern european` and `latin american`; the removed `mixed heritage` value returns to `None`.
+Character Architect visually reorganizes widgets into sections, while ComfyUI stores widget values positionally. The frontend serializes values in the backend schema's canonical order and includes migration maps for earlier canonical and visually reordered releases.
 
 ## Built-in guidance
 
