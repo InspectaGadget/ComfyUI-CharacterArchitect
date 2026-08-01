@@ -1,7 +1,7 @@
 {
   "id": "krea2-identity-edit-unified",
   "revision": 0,
-  "last_node_id": 438,
+  "last_node_id": 441,
   "last_link_id": 1039,
   "nodes": [
     {
@@ -18,7 +18,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 25,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -59,54 +59,6 @@
       ]
     },
     {
-      "id": 57,
-      "type": "VAELoader",
-      "pos": [
-        398.13491813288573,
-        184.71409565873446
-      ],
-      "size": [
-        480,
-        90
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            6,
-            759,
-            840,
-            903
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.26.0",
-        "Node name for S&R": "VAELoader",
-        "models": [
-          {
-            "name": "qwen_image_vae.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
-            "directory": "vae"
-          }
-        ],
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "version": "7.6.2",
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "wan_2.1_vae.safetensors"
-      ]
-    },
-    {
       "id": 341,
       "type": "PreviewImage",
       "pos": [
@@ -118,7 +70,7 @@
         739.6805527974561
       ],
       "flags": {},
-      "order": 18,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -160,7 +112,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 16,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -209,7 +161,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 17,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -259,7 +211,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 5,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -305,7 +257,7 @@
         26
       ],
       "flags": {},
-      "order": 30,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -345,7 +297,7 @@
         106
       ],
       "flags": {},
-      "order": 26,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
@@ -392,7 +344,7 @@
         226
       ],
       "flags": {},
-      "order": 28,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
@@ -443,7 +395,7 @@
         58
       ],
       "flags": {},
-      "order": 29,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
@@ -487,7 +439,7 @@
         82
       ],
       "flags": {},
-      "order": 27,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
@@ -534,7 +486,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -594,7 +546,7 @@
         222
       ],
       "flags": {},
-      "order": 21,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -649,7 +601,7 @@
         82
       ],
       "flags": {},
-      "order": 22,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -683,55 +635,6 @@
       ]
     },
     {
-      "id": 56,
-      "type": "CLIPLoader",
-      "pos": [
-        396.0470293274763,
-        19.831466056931376
-      ],
-      "size": [
-        488.47,
-        115.80000000000001
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            936,
-            944,
-            945
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.26.0",
-        "Node name for S&R": "CLIPLoader",
-        "models": [
-          {
-            "name": "qwen3vl_4b_fp8_scaled.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
-            "directory": "text_encoders"
-          }
-        ],
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "version": "7.6.2",
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "qwen3vl_4b_AbliteratedComfyui_v10.safetensors",
-        "krea2",
-        "default"
-      ]
-    },
-    {
       "id": 392,
       "type": "PreviewImage",
       "pos": [
@@ -743,7 +646,7 @@
         739.6805527974561
       ],
       "flags": {},
-      "order": 19,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -785,7 +688,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 31,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -827,7 +730,7 @@
         130
       ],
       "flags": {},
-      "order": 9,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -874,7 +777,7 @@
         130
       ],
       "flags": {},
-      "order": 2,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -921,7 +824,7 @@
         46
       ],
       "flags": {},
-      "order": 23,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -1026,7 +929,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 24,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -1127,7 +1030,7 @@
         226
       ],
       "flags": {},
-      "order": 20,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -1180,7 +1083,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 14,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -1291,7 +1194,7 @@
         126
       ],
       "flags": {},
-      "order": 3,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1338,7 +1241,7 @@
         2820
       ],
       "flags": {},
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -1526,7 +1429,7 @@
         166
       ],
       "flags": {},
-      "order": 6,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -1601,7 +1504,7 @@
         130
       ],
       "flags": {},
-      "order": 12,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -1648,7 +1551,7 @@
         130
       ],
       "flags": {},
-      "order": 13,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -1697,7 +1600,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 15,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -1798,7 +1701,7 @@
         106
       ],
       "flags": {},
-      "order": 4,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1825,6 +1728,132 @@
         33,
         "randomize",
         null
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 57,
+      "type": "VAELoader",
+      "pos": [
+        399.3267357866585,
+        178.755007389871
+      ],
+      "size": [
+        480,
+        90
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            6,
+            759,
+            840,
+            903
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.26.0",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
+            "directory": "vae"
+          }
+        ],
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.6.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "wan_2.1_vae.safetensors"
+      ]
+    },
+    {
+      "id": 56,
+      "type": "CLIPLoader",
+      "pos": [
+        396.0470293274763,
+        19.831466056931376
+      ],
+      "size": [
+        488.47,
+        115.80000000000001
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            936,
+            944,
+            945
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.26.0",
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "qwen3vl_4b_fp8_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
+            "directory": "text_encoders"
+          }
+        ],
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.6.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "qwen3VL4BAbliteratedComfyui_v10.safetensors.safetensors",
+        "krea2",
+        "default"
+      ]
+    },
+    {
+      "id": 441,
+      "type": "MarkdownNote",
+      "pos": [
+        -412.8739325598492,
+        -218.7142246533968
+      ],
+      "size": [
+        579.7807142421351,
+        922.8759813314521
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "ue_properties": {
+          "widget_ue_connectable": {},
+          "version": "7.6.2",
+          "input_ue_unconnectable": {}
+        }
+      },
+      "widgets_values": [
+        "# Character Architect - Krea 2\n\nCharacter Architect is a character-generation workflow built around the **CharacterPromptFactory** node and **Krea 2 Turbo**.\n\nIt provides a wide range of selectable or randomized character attributes, including gender, ethnicity, facial features, physical traits, body type, hairstyle, clothing, cosplay, accessories, poses, composition, environments, colors, textures, and visual styles.\n\n---\n\n## Model Links - Local Users\n\nThis workflow is configured for the **Krea 2 Turbo INT8 ConvRot** model.\nFor the official BF16, FP8, INT8 ConvRot, MXFP8, and NVFP4 variants, see:\n[Comfy-Org Krea 2 models](https://huggingface.co/Comfy-Org/Krea-2)\n\n### diffusion_models\n\n**krea2_turbo_int8_convrot.safetensors**\n[Download krea2_turbo_int8_convrot](https://huggingface.co/Comfy-Org/Krea-2/blob/main/diffusion_models/krea2_turbo_int8_convrot.safetensors)\n\n### text_encoders\n**qwen3VL4BAbliteratedComfyui_v10.safetensors**\n[Download the Qwen3-VL text encoder](https://huggingface.co/alienmafio/my-krea2-loras/blob/main/qwen3VL4BAbliteratedComfyui_v10.safetensors)\n\n### vae\n**wan_2.1_vae.safetensors**\n[Download wan_2.1_vae](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/vae/wan_2.1_vae.safetensors)\n\n### loras\n**Krea2_TextFusion_Refusal_Reduction.safetensors**\n[Download Krea2 TextFusion Refusal Reduction](https://huggingface.co/Kutches/Kr3a/blob/main/Krea2_TextFusion_Refusal_Reduction.safetensors)\n\n### upscale_models\n**4x-PBRify_RPLKSRd_V3.pth**\n[Download 4x-PBRify RPLKSRd V3](https://huggingface.co/easygoing0114/AI_upscalers/blob/main/4x-PBRify_RPLKSRd_V3.pth)\n\n---\n\n## Model Storage Location\n\n```text\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   └── 📂 KREA 2/\n│   │       └── krea2_turbo_int8_convrot.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3vl_4b_AbliteratedComfyui_v10.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── wan_2.1_vae.safetensors\n│   │\n│   ├── 📂 loras/\n│   │   └── 📂 KREA2/\n│   │       └── Krea2_TextFusion_Refusal_Reduction.safetensors\n│   │\n│   └── 📂 upscale_models/\n│       └── 4x-PBRify_RPLKSRd_V3.pth\n```\n\nThe subfolders are optional.\n\nIf you use different filenames or folder locations, update the corresponding model selections inside the workflow.\n\n---\n\n## Required Custom Nodes\nInstall missing custom nodes through **ComfyUI Manager** whenever possible.\nRestart ComfyUI after installing or updating custom nodes.\n\n### Character Architect\nContains the main **CharacterPromptFactory** node used to build the character prompt.\n[Character Architect repository](https://github.com/InspectaGadget/ComfyUI-CharacterArchitect/tree/main)\n\n### ComfyUI Krea2T Enhancer\n[ComfyUI-Krea2T-Enhancer](https://github.com/capitan01R/ComfyUI-Krea2T-Enhancer)\n\n### Krea 2 Conditioning Control\n[comfyui-krea2-conditioning](https://github.com/huwhitememes/comfyui-krea2-conditioning)\n\n### RES4LYF\n[RES4LYF](https://github.com/ClownsharkBatwing/RES4LYF)\n\n### rgthree-comfy\n[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)\n\n### ComfyUI Easy Use\n[ComfyUI-Easy-Use](https://github.com/yolain/ComfyUI-Easy-Use)\n\n### ComfyUI Custom Scripts\n[ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)\n\n### ComfyUI Comfyroll Custom Nodes\n[ComfyUI Comfyroll Custom Nodes](https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes)\n\n### ComfyUI KJNodes\n[ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes)\n\n### WAS Node Suite\n[WAS Node Suite](https://github.com/WASasquatch/was-node-suite-comfyui)\n\n### ComfyUI LayerStyle\n[ComfyUI LayerStyle](https://github.com/chflame163/ComfyUI_LayerStyle)\n\n### VRGameDevGirl ComfyUI Nodes\n[VRGameDevGirl ComfyUI Nodes](https://github.com/vrgamegirl19/comfyui-vrgamedevgirl)\n\n\n### Character Architect or workflow issues\n\n[Character Architect Issues](INSERT_CHARACTER_ARCHITECT_GITHUB_ISSUES_URL_HERE)\n\nFor an error caused by a specific third-party node, report the problem directly on that node's GitHub repository and include the complete ComfyUI console log.\n"
       ],
       "color": "#432",
       "bgcolor": "#653"
@@ -2214,10 +2243,10 @@
   "extra": {
     "frontendVersion": "1.47.10",
     "ds": {
-      "scale": 0.5730855330116793,
+      "scale": 0.8390545288824,
       "offset": [
-        -895.0972605696239,
-        71.34877562739499
+        -1676.22919230487,
+        332.66663555713416
       ]
     },
     "VHS_latentpreview": true,
