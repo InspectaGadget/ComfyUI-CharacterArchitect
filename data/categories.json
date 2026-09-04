@@ -49,9 +49,7 @@
       "default": "normal",
       "values": [
         "normal",
-        "glamour",
-        "sexy",
-        "explicit"
+        "glamour/sexy/explicit"
       ]
     },
     {
@@ -65,17 +63,23 @@
         "bust portrait",
         "half-body portrait",
         "three-quarter portrait",
-        "full-body portrait",
-        "full-body glamour portrait",
-        "editorial portrait",
-        "cinematic portrait",
-        "fashion portrait",
-        "beauty portrait",
-        "street-style portrait",
-        "environmental portrait",
-        "candid portrait",
-        "dramatic portrait",
-        "spontaneous handheld selfie"
+        "full-body portrait"
+      ]
+    },
+    {
+      "key": "capture_style",
+      "label": "Capture style",
+      "default": "None",
+      "values": [
+        "glamour",
+        "editorial",
+        "cinematic",
+        "fashion",
+        "beauty",
+        "street-style",
+        "environmental",
+        "candid",
+        "dramatic"
       ]
     },
     {
@@ -145,9 +149,81 @@
         "inside a grand hotel suite with layered rooms, rich textiles, and understated luxury",
         "inside a small neighborhood café with varied seating, window reflections, and quiet conversation",
         "on a pedestrian bridge with structural lines, city depth, and passing figures",
-        "inside an old railway carriage with worn textures, narrow depth, and seated travelers"
+        "inside an old railway carriage with worn textures, narrow depth, and seated travelers",
+        "along a Mediterranean harbor quay with moored boats, weathered stone, waterfront buildings, and open sea depth",
+        "in a broad brutalist civic plaza with monumental concrete forms, geometric steps, and sparse pedestrian movement",
+        "beneath an elevated railway with repeating steel supports, layered street activity, and deep urban perspective",
+        "along an urban canal embankment with stone walls, footbridges, waterside paths, and passing cyclists",
+        "at a suburban gas station with fuel pumps, a small convenience building, parked vehicles, and roadside depth",
+        "on a vineyard terrace with ordered vine rows, low stone walls, distant hills, and open agricultural depth",
+        "inside a dense bamboo grove with tall repeating stalks, filtered daylight, leaf litter, and winding natural paths",
+        "along a rocky canyon trail with layered sandstone walls, uneven ground, sparse vegetation, and distant depth",
+        "on a vast salt flat with pale textured ground, a low uninterrupted horizon, and subtle distant reflections",
+        "along a wetland boardwalk with reed beds, shallow reflective water, open sky, and distant birdlife",
+        "inside a spacious artist studio with large windows, easels, canvases, worktables, and layered creative clutter",
+        "inside a working ceramics studio with pottery wheels, clay-covered tables, drying shelves, and finished vessels",
+        "inside a grand natural-history museum hall with large specimen displays, stone architecture, and scattered visitors",
+        "inside a professional vehicle workshop with full-size cars, hydraulic lifts, tool cabinets, and open service bays",
+        "inside a bright dance rehearsal studio with sprung flooring, mirrored walls, high windows, and open practice space",
+        "inside a working bakery with flour-dusted counters, cooling racks, ovens, and active preparation areas",
+        "inside a public gymnasium with court markings, retractable bleachers, sports equipment, and broad overhead structure",
+        "inside a large working farm barn with timber framing, stacked hay, agricultural tools, and open daylight from wide doors",
+        "inside a textile workshop with cutting tables, fabric rolls, sewing stations, and hanging work in progress",
+        "beside a public indoor swimming pool with tiled deck, lane markings, high windows, and reflective aquatic depth",
+        "inside a vast aircraft hangar with full-size aircraft, maintenance platforms, equipment carts, and daylight through broad doors",
+        "inside an aquarium tunnel with curved transparent walls, moving marine life, blue ambient light, and visitors in the distance",
+        "in the open central aisle of a vintage cinema auditorium with upholstered seat rows, decorative walls, and a distant screen",
+        "at a bowling-lane approach area with polished lanes, ball returns, scoring displays, and neighboring players",
+        "inside an underground parking garage with concrete columns, painted bay markings, parked cars, and layered artificial light",
+        "inside a spacious supermarket aisle with stocked shelves, shopping carts, overhead signs, and distant customers",
+        "inside a music rehearsal room with instrument stands, amplifiers, acoustic panels, and loosely arranged equipment",
+        "inside an observatory dome with a large telescope, curved mechanical structure, control equipment, and a partly open roof slit",
+        "inside an archival reading room with long tables, document stands, storage cabinets, and quiet researchers",
+        "inside a modern laboratory with glassware, analytical equipment, illuminated workbenches, and controlled technical order",
+        "inside a professional radio studio with broadcast microphones, acoustic panels, mixing equipment, and a window into the control room",
+        "inside a martial-arts dojo with padded flooring, simple training equipment, open practice space, and restrained wooden details",
+        "inside a commercial airplane passenger cabin with aligned seat rows, overhead luggage bins, oval windows, and a visible central aisle",
+        "inside a spacious Art Deco elevator with wood-and-brass wall panels, illuminated controls, a patterned floor, and closed sliding doors",
+        "beside an indoor karting circuit with tire barriers, painted track markings, parked go-karts, and a broad industrial roof",
+        "inside a spacious hospital treatment room with diagnostic monitors, articulated medical equipment, stainless carts, and clinical workstations in the background",
+        "at an eerie abandoned amusement park with rusting rides, peeling paint, cracked pavement, encroaching weeds, and empty urbex depth"
       ],
       "default": "None"
+    },
+    {
+      "key": "scene_scenario",
+      "label": "Scene scenario",
+      "default": "None",
+      "values": [
+        "seated at a casino gaming table, playing a hand of poker with an expression blending mischief and concentration",
+        "standing at a retro arcade cabinet, hands on the controls and absorbed in a fast-paced game",
+        "singing into a microphone in a karaoke bar, reacting to a small lively audience",
+        "ordering at a busy café counter while staff prepare drinks behind the counter",
+        "waiting on a train platform beside luggage, watching arriving passengers board",
+        "studying at a library table among open books, notes, and quiet nearby readers",
+        "browsing a vinyl record in an independent record shop, carefully examining its sleeve",
+        "bargaining with a market vendor at a busy open-air stall",
+        "dancing on a crowded party floor among moving guests and shifting lights",
+        "seated in a tattoo studio, ready for an upcoming tattoo session, while a tattoo artist stands nearby holding a tattoo machine and preparing to begin, before any tattooing has started",
+        "examining an artwork in a gallery among quiet visitors",
+        "folding fresh laundry inside a neighborhood laundromat",
+        "ordering from a busy street-food stall amid waiting customers",
+        "seated in a diner booth, engaged in lively conversation with companions",
+        "inspecting an unusual object at a flea-market stall",
+        "waiting at a bus stop among commuters watching approaching traffic",
+        "standing at an airport baggage carousel, watching luggage pass",
+        "singing into a studio microphone during rehearsal while the band remains nearby",
+        "following through after releasing a bowling ball and watching it travel down the lane",
+        "waiting backstage before a performance, sharing a mirror with other performers",
+        "relaxing at a rooftop gathering among a small group and distant city lights",
+        "seated in a hair salon while a stylist works, with mirrors and quiet activity around them",
+        "assembling a handmade object at a community workshop among other participants",
+        "riding a full-size road bicycle along a real cycle path, seated on the saddle with both hands on the handlebars, feet placed on the pedals, and the body leaning naturally forward",
+        "riding a full-size horse in an open equestrian arena, seated securely in a fitted saddle with both feet in the stirrups, both hands loosely holding the reins, and the torso following the horse's movement",
+        "seated correctly in the driver's seat inside a full-size production passenger car with a conventional enclosed cabin, visible dashboard, windshield, doors, and an empty front passenger seat, both hands naturally on the steering wheel while driving along a real road",
+        "riding a full-size decorative carousel horse on a working amusement-park carousel, seated astride the saddle with one hand holding the central pole as the surrounding platform turns",
+        "riding a skateboard through a real urban skatepark, one foot planted on the board, the other just lifted after pushing, arms balancing naturally among ramps and painted concrete"
+      ]
     },
     {
       "key": "lens_style",
@@ -175,13 +251,11 @@
         "centered composition",
         "symmetrical composition",
         "rule-of-thirds composition",
-        "tight crop",
-        "wide framing",
         "negative-space composition",
         "dynamic diagonal composition",
         "subject placed high in frame",
         "subject placed low in frame",
-        "clean studio composition",
+        "clean precisely organized composition",
         "editorial magazine composition",
         "candid off-center framing"
       ],
@@ -189,14 +263,14 @@
     },
     {
       "key": "pose_mood",
-      "label": "Pose and mood",
+      "label": "Attitude / mood",
       "values": [
-        "relaxed pose",
-        "confident pose",
-        "playful pose",
-        "seductive pose",
-        "elegant pose",
-        "guarded pose",
+        "relaxed attitude",
+        "confident attitude",
+        "playful attitude",
+        "seductive attitude",
+        "elegant bearing",
+        "guarded attitude",
         "melancholic mood",
         "dreamy mood",
         "rebellious attitude",
@@ -214,61 +288,100 @@
       "label": "Pose",
       "default": "None",
       "values": [
-        "standing with the back partly turned, looking over one shoulder, hips shifted softly to one side",
-        "bending forward with both hands resting above the knees, hips pushed back slightly",
-        "standing in a three-quarter pose, one hand in the hair, hips turned away",
-        "standing with both arms raised above the head, wrists loosely crossed, torso elongated",
-        "leaning back against a wall, one knee bent, hips angled slightly, relaxed sensual posture",
+        "standing with the weight shifted softly onto one hip",
+        "bending forward with both hands resting above the knees",
+        "standing with one hand in the hair and the weight shifted onto one hip",
+        "standing with both arms raised, wrists loosely crossed",
+        "leaning back against a wall with one knee bent",
         "seated upright with legs crossed, one hand resting on the upper knee",
         "perched on the edge of a chair, knees together, torso leaning forward slightly, hands resting on the thighs",
         "seated with one knee raised toward the chest, arms loosely wrapped around the leg",
-        "sitting sideways on a stool, upper body twisting toward the camera, one hand braced behind",
+        "seated on the edge of a stool with one hand braced behind",
         "sitting low with knees comfortably apart, elbows resting on the thighs, shoulders slightly forward",
         "balanced in a low squat, elbows resting loosely on the thighs, torso upright",
         "compact low squat, arms wrapped around the knees, shoulders slightly rounded",
         "low crouching pose, one hand planted on the floor, the other resting on the thigh",
-        "low side squat, one heel raised, torso upright",
+        "low side squat, torso upright",
         "kneeling with hips resting on the heels, hands placed on the thighs, upright elegant posture",
         "kneeling on one knee with the other knee raised, forearm resting across the raised thigh",
         "kneeling upright with both hands behind the head, elbows open, hips shifted slightly to one side",
         "kneeling and leaning forward, palms resting on the floor in front",
-        "on hands and knees, back mostly straight, head turned toward the camera, natural elegant body line",
-        "on hands and knees viewed from a rear three-quarter angle, hips angled toward the camera, looking back over one shoulder",
-        "on hands and knees with a gentle arch through the lower back, shoulders lowered, chin slightly raised",
-        "on hands and knees with one knee drawn forward between the hands, torso turned slightly toward the camera",
-        "kneeling with forearms resting on the floor, hips raised, back gently curved, head turned toward the camera",
+        "on hands and knees with the back mostly straight",
+        "on hands and knees with the weight shifted onto one arm",
+        "on hands and knees with a gentle arch through the lower back and the shoulders lowered",
+        "on hands and knees with one knee drawn forward between the hands and the torso gently twisted",
+        "kneeling with forearms resting on the floor, hips raised, and the back gently curved",
         "lying on the stomach, upper body lifted on the elbows, both lower legs raised behind",
         "reclining on one side in a gentle S-curve, upper body supported by one forearm, upper knee drawn forward",
+        "lying on the back with the legs comfortably spread apart and the arms resting naturally",
+        "lying on the side with the head supported by one hand and the legs relaxed",
+        "lying on the back with one knee bent and the other leg extended",
+        "lying on the stomach with the upper body gently raised on the forearms",
+        "lying curled slightly on one side with the knees loosely drawn upward",
+        "reclining on the back with both knees bent and the feet resting on the supporting surface",
         "standing at attention with one hand raised in a formal military salute",
-        "raising one hand in a friendly wave toward someone off-frame",
+        "raising one hand in a friendly wave",
         "standing naturally with both arms folded across the chest",
         "standing casually with both hands resting in the pockets",
         "standing with both hands loosely clasped behind the back",
         "giving a cheerful thumbs-up with one hand",
         "raising both shoulders in a light shrug, palms turned upward",
         "adjusting one sleeve with the opposite hand",
-        "riding a bicycle through the scene, both hands holding the handlebars, body leaning naturally forward, captured in gentle motion",
-        "riding a horse, seated securely in the saddle, both hands loosely holding the reins, torso following the horse's movement",
-        "seated behind the wheel of a car, both hands placed naturally on the steering wheel, actively driving while glancing toward the camera",
-        "riding a moving carousel horse, seated astride the saddle with one hand holding the central pole, surrounding lights and background softened by motion blur",
-        "riding a skateboard through the scene, one foot planted on the board, the other just lifted after pushing, arms balancing naturally",
-        "caught mid-spin while dancing, torso turning dynamically, arms following the movement, hair and clothing trailing naturally through the air"
+        "caught mid-spin while dancing, torso and arms turning dynamically"
+        ,"taking a selfie with one arm extended, holding a smartphone at arm's length with its front camera aimed toward the subject, looking into the phone's camera"
+        ,"holding a game controller with both hands, absorbed in an ongoing game"
+        ,"listening intently to a speech, visibly moved, among a small crowd of fellow listeners"
+        ,"applauding enthusiastically among a gathered audience"
+        ,"laughing during a lively group conversation"
+        ,"waiting patiently in a loose queue, casually observing the surroundings"
+        ,"joining a spontaneous group cheer with one arm raised"
+        ,"dancing casually among a small surrounding crowd"
+        ,"watching a nearby performance with absorbed fascination"
+        ,"reading a posted notice alongside several curious onlookers"
+        ,"reacting with surprise as the surrounding crowd turns toward the same event"
+        ,"sharing a celebratory toast within a small gathering"
+        ,"posing naturally while friends gather loosely nearby"
+        ,"reaching forward with one arm to grasp another person's offered hand just outside the frame"
+        ,"reading a folded newspaper held naturally in both hands, absorbed in the article"
+        ,"writing a quick note in a small pocket notebook, pausing briefly in thought"
+        ,"holding an unfolded paper map and tracing a route with one finger"
+        ,"taking a casual sip from a takeaway cup, holding it loosely near the face"
+        ,"examining a small instant photograph held delicately between the fingers"
       ]
     },
     {
       "key": "camera_direction",
       "label": "Camera direction",
       "values": [
-        "facing camera",
-        "three-quarter angle",
+        "front-facing view",
+        "three-quarter view",
         "profile view",
-        "looking down toward camera",
+        "rear three-quarter view"
+      ],
+      "default": "None"
+    },
+    {
+      "key": "head_direction",
+      "label": "Head direction",
+      "values": [
+        "head held level",
+        "head tilted slightly",
         "looking upward",
-        "pronounced low-angle view, with the camera positioned below the subject",
-        "pronounced high-angle view, with the camera positioned above the subject",
-        "front-facing symmetrical view",
-        "head tilted toward camera",
-        "slight sideways glance"
+        "looking downward",
+        "glancing slightly to one side",
+        "looking back over one shoulder"
+      ],
+      "default": "None"
+    },
+    {
+      "key": "camera_angle",
+      "label": "Camera angle",
+      "values": [
+        "at eye level",
+        "from a pronounced low angle, with the camera positioned below the subject",
+        "from an extreme worm's-eye angle at ground level, with the camera looking sharply upward",
+        "from a pronounced high angle, with the camera positioned above the subject",
+        "from an overhead bird's-eye angle, with the camera looking straight down"
       ],
       "default": "None"
     },
@@ -299,7 +412,8 @@
       "values": [
         "fisheye",
         "infrared false-color",
-        "high-contrast duotone"
+        "high-contrast duotone",
+        "selective-color monochrome"
       ],
       "default": "None"
     },
@@ -343,24 +457,15 @@
     },
     {
       "key": "body_type",
-      "label": "Body type",
+      "label": "Body height",
       "values": [
-        "very petite",
-        "petite",
-        "short compact build",
-        "slim",
-        "slender",
-        "lanky",
-        "average build",
-        "voluptuous",
-        "plus-size",
-        "stocky",
-        "broad-built",
-        "tall and slender",
-        "tall and curvy",
-        "compact build",
-        "statuesque",
-        "androgynous build"
+        "person with dwarfism",
+        "very short",
+        "short",
+        "average height",
+        "tall",
+        "very tall",
+        "a person of giant stature"
       ],
       "default": "None"
     },
@@ -368,19 +473,18 @@
       "key": "body_physique",
       "label": "Body physique",
       "values": [
+        "extremely underweight physique",
         "very slim physique",
         "slim physique",
-        "soft physique",
-        "plump physique",
-        "overweight physique",
-        "obese physique",
         "soft untrained physique",
+        "average physique",
         "lightly toned physique",
         "toned physique",
+        "plump physique",
+        "plus-size physique",
+        "overweight physique",
+        "obese physique",
         "athletic physique",
-        "wiry physique",
-        "lean masculine physique",
-        "broad-shouldered physique",
         "muscular physique",
         "heavily muscular physique"
       ],
@@ -391,18 +495,19 @@
       "label": "Body curves",
       "values": [
         "almost no curves",
-        "very slender silhouette",
-        "very slight curves",
         "straight silhouette",
-        "boyish silhouette",
+        "androgynous silhouette",
         "subtle curves",
         "balanced curves",
-        "soft curves",
-        "gentle hourglass silhouette",
-        "pronounced curves",
-        "hourglass silhouette",
+        "soft hourglass silhouette",
+        "pronounced hourglass silhouette",
         "pear-shaped silhouette",
-        "narrow-hip silhouette"
+        "top-heavy silhouette",
+        "narrow-hip silhouette",
+        "wide-hip silhouette",
+        "short-legged proportions",
+        "long-legged proportions",
+        "pronounced lumbar lordosis, with a deeply concave lower back, the abdomen projecting forward, and the pelvis tilted so the buttocks project prominently backward"
       ],
       "default": "None"
     },
@@ -997,7 +1102,7 @@
         "soft grunge styling",
         "visual kei styling",
         "romantic lace styling",
-        "minimalist monochrome style",
+        "minimalist monochrome clothing",
         "sporty athleisure style",
         "fetish-inspired fashion details",
         "scene queen styling",
@@ -1043,7 +1148,8 @@
         "band tee",
         "cropped camisole",
         "cute mascot hoodie",
-        "cartoon character sweater"
+        "cartoon character sweater",
+        "oversized open-mesh fishnet sweater"
       ],
       "default": "None"
     },
@@ -1108,7 +1214,13 @@
         "leggings",
         "joggers",
         "leather pants",
-        "long skirt"
+        "long skirt",
+        "Japanese-inspired super-high-waisted wide-leg trousers with a broad extended waistband and deep pleats",
+        "drop-crotch sarouel harem pants",
+        "high-waisted performance leggings with wide sheer lace side panels",
+        "cutout athletic leggings with large sheer mesh panels",
+        "loose flowing wide-leg halter jumpsuit",
+        "sleek figure-hugging flared jumpsuit"
       ],
       "default": "None"
     },

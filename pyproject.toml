@@ -1,0 +1,18 @@
+[project]
+name = "CharacterArchitect"
+description = "A ComfyUI character prompt builder with high ethnicity adherence for Krea 2, conflict-aware randomization, and Identity Forge compatibility."
+version = "4.5.0"
+license = { file = "LICENSE" }
+dependencies = []
+
+# classifiers = [
+#    #     "Operating System :: OS Independent",
+# ]
+
+[project.urls]
+Repository = "https://github.com/InspectaGadget/ComfyUI-CharacterArchitect"
+"Bug Tracker" = "https://github.com/InspectaGadget/ComfyUI-CharacterArchitect/issues"
+
+[tool.comfy]
+PublisherId = "inspectagadget"
+DisplayName = "Character Architect"
