@@ -2,6 +2,51 @@
 
 A ComfyUI prompt builder with high ethnicity adherence for Krea 2, deterministic conflict-aware randomization, detailed character styling, and optional Identity Forge compatibility.
 
+## Version 5
+
+### V5.1.1
+
+V5.1.1 is a focused compatibility update for the reactive widget store introduced by recent ComfyUI frontend releases:
+
+- Registers every custom section header through ComfyUI's supported custom-widget API, preserving section colors, controls, and layout after the frontend store synchronizes.
+- Stops temporarily removing section widgets during workflow autosave, which could make the enhanced interface collapse into an ungrouped fallback view a few seconds after node creation.
+- Reapplies the section layout through current node-created and graph-loaded lifecycle hooks while reusing the same registered widgets instead of creating duplicates.
+- Leaves the complete V5.1.0 prompt engine, randomization rules, vocabularies, widget values, and workflow migrations unchanged.
+
+See `CHANGELOG-v5.1.1.md` for implementation and validation details.
+
+### V5.1.0
+
+V5.1.0 is a large coherence and variety update built around the way Character Architect is actually used in production:
+
+- Restores deliberate Body Archetypes on Identity Forge creatures while continuing to suppress accidental ordinary human-body randoms. A concrete archetype, `Female Random`, `Male Random`, or `Forced Random` now acts as an explicit opt-in to the complete resolved morphology.
+- Merges `BODY` and `BODY SPECIFIC` into one practical section with a single set of controls, and adds a genuinely soft, non-muscular `Soft Obese Male` archetype.
+- Adds seven sleeve constructions, including extra-long sleeves extending past the wrists and partly covering the hands, with garment-aware ordinary randomization and explicit attachment to the active upper garment.
+- Repairs cross-gender wardrobe recipes: choosing `(male) Classic Menswear` for a woman no longer lets later coherence passes turn the outfit back into a skirt-based wardrobe.
+- Expands the subject vocabulary with `Neutral / None`, `Human`, `Creature`, and `Anthro Furry` species modes plus the nonhuman-friendly `female` and `male` gender words. Identity Forge creatures no longer receive the unwanted word `hybrid`.
+- Expands the setting catalogue from 101 to 149 entries and Scene Scenarios from 28 to 43, covering iconic cities, extreme locations, entertainment venues, deep-sea and space environments, fantasy/game worlds, and short story-like actions. The ordinary Scenario branch remains rare at 10%.
+- Rewrites all 50 Composition Archetype menu labels so their framing, pose, or viewing logic is understandable before selection. Old saved labels migrate automatically and labels still never enter the prompt.
+- Keeps the emphasized archetype rows while restoring independent left/right cycling arrows; clicking the center still opens the complete menu.
+- Preserves V2–V5 workflows through name-based and positional migrations, including the newly inserted Sleeve Length control.
+
+See `CHANGELOG-v5.1.0.md` for implementation and validation details.
+
+### V5.0.0
+
+V5.0.0 gives masculine characters the same depth previously reserved for feminine characters, while keeping the node playful, permissive, and backward compatible:
+
+- Adds 12 masculine Body Archetypes and 10 masculine Clothing Archetypes, plus a substantial menswear vocabulary spanning everyday clothes, tailoring, workwear, streetwear, sportswear, underwear, swimwear, sleepwear, outerwear, shoes, belts, and neckwear.
+- Makes ordinary `Random` anatomy and clothing follow the selected gender profile. Manual choices and `Forced Random` stay unrestricted, while femboy and tomboy wardrobe pools remain intentionally mixed.
+- Adds explicit `Female Random` and `Male Random` choices to both Archetype rows. They draw respectively from female + unisex or male + unisex recipes, independently of the Gender row.
+- Keeps the secondary trouser-length coherence pass gender-aware, so a long masculine outfit cannot be rewritten to a female-only long skirt.
+- Adds unobtrusive `(female)`, `(unisex)`, and `(male)` guidance to gender-sensitive menu choices, grouped in that order. These tags are interface-only and never enter generated prompts.
+- Replaces the two conflicting cleavage controls with one atomic `Neckline` row in Clothing. Old workflows retain their serialized values and are deterministically translated into a single compatible neckline.
+- Keeps feminine garments available for masculine characters, but explicitly tailors them over a flat masculine chest instead of inviting the image model to invent cleavage.
+- Appends two reusable source-only outputs: `Identity Forge Description` and `Face & Hair Description`, both rendered as compact natural-language text without the rest of the prompt.
+- Preserves the established node identity, the first four output positions, all existing random/manual/override priorities, and V2–V4 workflow migrations.
+
+See `CHANGELOG-v5.0.0.md` for implementation and validation details.
+
 ## Version 4
 
 ### V4.5.0
