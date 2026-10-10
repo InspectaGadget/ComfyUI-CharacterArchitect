@@ -1,24 +1,82 @@
-// Character Architect frontend schema v28 / public v4.5.0.
+// Character Architect frontend schema v31 / public v5.1.1.
 import { app } from "../../scripts/app.js";
 
 const RANDOM_PROTECTED_KEYS = new Set([
+    "cleavage_depth", "cleavage_type",
     "body_hair", "facial_hair", "skin_finish", "makeup_complexion",
     "head_accessory", "accessories_glasses", "armwear", "accessories_bag", "accessories_scarf",
     "outerwear", "outerwear_color", "outerwear_wearing_style",
     "free_prompt_position", "clothing_archetype", "scene_scenario", "optical_effect", "enforce_portrait_framing",
     "override_field", "inspect_property",
 ]);
+const ARCHETYPE_RANDOM_OPTIONS = new Set(["Female Random", "Male Random"]);
 const GLOBAL_PIVOT_KEYS = new Set(["ethnicity_guidance", "enhance_realism"]);
 const COMPOSITION_ARCHETYPE_CONTROL_KEYS = [
     "portrait_style", "pose", "camera_direction", "head_direction",
     "eye_focus", "camera_angle", "shot_composition",
 ];
+const BODY_ARCHETYPE_CONTROL_KEYS = [
+    "body_type", "body_physique", "body_feminine_curves", "bust", "butt_shape",
+    "thigh_shape", "body_detail_1", "body_detail_2", "body_detail_3",
+];
+const LEGACY_COMPOSITION_ARCHETYPE_LABELS = new Map([
+    ["Direct Headshot", "Headshot — centered, direct camera gaze"],
+    ["Three-Quarter Close Portrait", "Close ¾ Portrait — angled, direct gaze"],
+    ["Strict Profile Portrait", "Profile Close-Up — side view, negative space"],
+    ["High-Angle Intimate Portrait", "Intimate Close Portrait — camera above"],
+    ["Low-Angle Iconic Portrait", "Iconic Close Portrait — camera below"],
+    ["Rear Look-Back Portrait", "Rear ¾ Portrait — looking back"],
+    ["Relaxed Hip-Shift Standing", "Standing — relaxed hip shift"],
+    ["Hand-in-Hair Standing", "Standing — hand in hair, hip shifted"],
+    ["Arms-Raised Standing", "Standing — both arms raised"],
+    ["Wall-Leaning Portrait", "Standing — leaning against a wall"],
+    ["Forward-Leaning Portrait", "Standing — leaning forward, hands on knees"],
+    ["Folded-Arms Portrait", "Standing — arms folded"],
+    ["Hands-in-Pockets Standing", "Standing — hands in pockets"],
+    ["Hands-Behind-Back Standing", "Standing — hands behind back"],
+    ["Friendly Hand Gesture", "Half-Body — friendly wave"],
+    ["Formal Salute", "Half-Body — formal salute"],
+    ["Cross-Legged Seated", "Seated — legs crossed, composed"],
+    ["Chair-Edge Forward Lean", "Seated — chair edge, leaning forward"],
+    ["Knee-Drawn-Up Seated", "Seated — one knee drawn up"],
+    ["Side Stool Portrait", "Seated — sideways on a stool"],
+    ["Low Open Seated", "Low Seated — knees apart, elbows on thighs"],
+    ["Balanced Low Squat", "Low Squat — balanced, torso upright"],
+    ["Compact Squat", "Compact Squat — arms around knees"],
+    ["Grounded Crouch", "Crouching — one hand on the ground"],
+    ["Side Squat", "Side Squat — upright profile"],
+    ["Elegant Heel-Sit", "Kneeling — seated on heels, elegant"],
+    ["One-Knee Kneel", "Kneeling — one knee raised"],
+    ["Upright Open-Elbow Kneel", "Kneeling — upright, hands behind head"],
+    ["Forward-Leaning Kneel", "Kneeling — leaning onto both hands"],
+    ["All-Fours Neutral", "All Fours — straight back, profile"],
+    ["All-Fours Twist", "All Fours — torso twisted, rear ¾"],
+    ["Arched Floor Pose", "All Fours — gently arched back"],
+    ["Playful Prone", "Lying Face-Down — elbows raised, legs lifted"],
+    ["Side S-Curve Reclining", "Side Recline — supported S-curve"],
+    ["Open Supine", "Lying on Back — open pose, overhead"],
+    ["Head-Supported Side Recline", "Side Recline — head supported by hand"],
+    ["Asymmetric Supine", "Lying on Back — one knee bent"],
+    ["Prone Forearm Portrait", "Lying Face-Down — raised on forearms"],
+    ["Curled Side Recline", "Side Recline — knees loosely curled"],
+    ["Bent-Knee Supine", "Lying on Back — both knees bent, overhead"],
+    ["Dynamic Movement", "Dynamic Motion — turning mid-dance"],
+    ["Handheld Selfie", "Selfie — phone held at arm’s length"],
+    ["Focused Handheld Object", "Holding an Object — gaze on the hands"],
+    ["Writing in Hand", "Writing — small notebook in hand"],
+    ["Casual Sip", "Casual Sip — cup held near the face"],
+    ["Social Candid", "Social Candid — lively conversation"],
+    ["Attentive Observer", "Observer — watching or listening nearby"],
+    ["Crowd Reaction", "Crowd Reaction — applause or cheering"],
+    ["Waiting Candid", "Waiting Candid — observing the surroundings"],
+    ["Social Exchange", "Social Exchange — reaching toward someone"],
+]);
 const ETHNICITY_GUIDED_RANDOM_KEYS = new Set([
     "face_shape", "jawline", "chin_shape", "eye_shape", "eye_color", "eyebrows",
     "nose_shape", "lip_shape", "hair_color", "hair_texture", "skin_finish",
 ]);
 const DRESS_KEYS = ["dress_type", "dress_color"];
-const SEPARATES_KEYS = ["top_type", "top_color", "bottom_type", "bottom_length", "bottom_color"];
+const SEPARATES_KEYS = ["top_type", "sleeve_length", "top_color", "bottom_type", "bottom_length", "bottom_color"];
 const LINGERIE_KEYS = ["lingerie_type", "lingerie_color"];
 const SLEEPWEAR_KEYS = ["sleepwear_type", "sleepwear_color"];
 const COSPLAY_KEYS = ["cosplay_type", "cosplay_color"];
@@ -33,6 +91,23 @@ const PRIMARY_CLOTHING_KEYS = [
     ...FRANCHISE_WESTERN_KEYS,
     ...FRANCHISE_ASIAN_KEYS,
 ];
+const CLOTHING_ARCHETYPE_CONTROL_KEYS = [
+    ...PRIMARY_CLOTHING_KEYS,
+    "neckline", "neckwear",
+    "outerwear", "outerwear_color", "outerwear_wearing_style",
+    "belt", "belt_color", "footwear", "footwear_color",
+    "hosiery", "hosiery_color", "accessories_scarf", "scarf_color",
+];
+const LEGACY_HIDDEN_WIDGET_KEYS = new Set(["cleavage_depth", "cleavage_type"]);
+const BODY_GENDER_PROFILE_WIDGETS = new Set([
+    "body_archetype", "body_type", "body_physique", "body_feminine_curves",
+    "bust", "butt_shape", "thigh_shape", "body_detail_1", "body_detail_2", "body_detail_3",
+]);
+const CLOTHING_GENDER_PROFILE_WIDGETS = new Set([
+    "clothing_archetype", "top_type", "bottom_type", "lingerie_type", "sleepwear_type",
+    "cosplay_type", "cosplay_franchise_western", "cosplay_franchise_asian",
+    "dress_type", "outerwear", "belt", "footwear", "neckwear",
+]);
 const FULL_BODY_ONE_PIECE_BOTTOM_TYPES = new Set([
     "loose flowing wide-leg halter jumpsuit",
     "sleek figure-hugging flared jumpsuit",
@@ -106,6 +181,13 @@ const BOTTOM_LENGTH_POOLS = new Map([
     ["cargo pants", ["knee-length", "mid-length", "long", "long"]],
     ["shorts", ["very short", "short", "short", "knee-length"]],
     ["denim shorts", ["very short", "short", "short", "knee-length"]],
+    ["basketball shorts", ["very short", "short", "short", "knee-length"]],
+    ["carpenter pants", ["mid-length", "long", "long"]],
+    ["chinos", ["mid-length", "long", "long"]],
+    ["relaxed-fit jeans", ["mid-length", "long", "long"]],
+    ["straight-leg jeans", ["mid-length", "long", "long"]],
+    ["tailored suit trousers", ["mid-length", "long", "long"]],
+    ["work trousers", ["mid-length", "long", "long"]],
     ["mini skirt", ["very short", "short"]],
     ["pleated skirt", ["very short", "short", "knee-length", "mid-length", "long"]],
     ["skater skirt", ["very short", "short", "knee-length", "mid-length"]],
@@ -132,13 +214,6 @@ const BOTTOM_LENGTH_POOLS = new Map([
     ["tapered technical cargo pants", ["mid-length", "long", "long"]],
     ["asymmetrical layered skirt", ["short", "knee-length", "mid-length", "long"]],
     ["patent leather pants", ["mid-length", "long"]],
-]);
-const NECKLINE_TYPES_BY_DEPTH = new Map([
-    ["high neckline", ["crew neck", "halter neckline"]],
-    ["modest neckline", ["crew neck", "scoop neck", "square neckline", "halter neckline"]],
-    ["open neckline", ["scoop neck", "V-neck", "sweetheart neckline", "square neckline", "off-shoulder neckline", "halter neckline"]],
-    ["low neckline", ["scoop neck", "V-neck", "sweetheart neckline", "square neckline", "off-shoulder neckline", "halter neckline", "plunging neckline"]],
-    ["deep neckline", ["V-neck", "sweetheart neckline", "off-shoulder neckline", "plunging neckline"]],
 ]);
 const SIMPLE_PHOTO_LIGHTING = [
     "soft studio lighting", "window light", "golden-hour light", "overcast daylight",
@@ -516,10 +591,27 @@ V440_CANONICAL_WIDGET_ORDER.splice(
     0,
     "composition_archetype",
 );
-const CANONICAL_WIDGET_ORDER = [
+const V450_CANONICAL_WIDGET_ORDER = [
     ...V440_CANONICAL_WIDGET_ORDER,
     "face_hair_text_override",
 ];
+const V500_CANONICAL_WIDGET_ORDER = [...V450_CANONICAL_WIDGET_ORDER];
+V500_CANONICAL_WIDGET_ORDER.splice(
+    V500_CANONICAL_WIDGET_ORDER.indexOf("cleavage_type") + 1,
+    0,
+    "neckline",
+);
+V500_CANONICAL_WIDGET_ORDER.splice(
+    V500_CANONICAL_WIDGET_ORDER.indexOf("clothing_archetype") + 1,
+    0,
+    "neckwear",
+);
+const CANONICAL_WIDGET_ORDER = [...V500_CANONICAL_WIDGET_ORDER];
+CANONICAL_WIDGET_ORDER.splice(
+    CANONICAL_WIDGET_ORDER.indexOf("top_type") + 1,
+    0,
+    "sleeve_length",
+);
 
 // Exact canonical order used before hosiery, outerwear, and belt colors were
 // added. Its 90 positional values restore by name before new defaults apply.
@@ -621,12 +713,11 @@ const GROUPS = [
     {
         id: "body",
         label: "BODY",
-        keys: ["body_archetype", "origin_age", "origin_ethnicity", "body_type", "body_physique", "body_feminine_curves"],
-    },
-    {
-        id: "body_specific",
-        label: "BODY SPECIFIC",
-        keys: ["bust", "cleavage_depth", "cleavage_type", "butt_shape", "thigh_shape", "body_detail_1", "body_detail_2", "body_detail_3", "body_hair", "skin_finish"],
+        keys: [
+            "body_archetype", "origin_age", "origin_ethnicity", "body_type", "body_physique",
+            "body_feminine_curves", "bust", "butt_shape", "thigh_shape", "body_detail_1",
+            "body_detail_2", "body_detail_3", "body_hair", "skin_finish",
+        ],
     },
     {
         id: "face",
@@ -647,7 +738,7 @@ const GROUPS = [
         id: "clothes_shoes",
         label: "CLOTHES, SLEEPWEAR, COSPLAY AND SHOES",
         keys: [
-            "clothing_archetype", "top_type", "top_color", "bottom_type", "bottom_length", "bottom_color",
+            "clothing_archetype", "neckline", "neckwear", "top_type", "sleeve_length", "top_color", "bottom_type", "bottom_length", "bottom_color",
             "lingerie_type", "lingerie_color", "sleepwear_type", "sleepwear_color", "cosplay_type", "cosplay_color",
             "cosplay_franchise_western", "cosplay_franchise_asian", "hosiery", "hosiery_color",
             "dress_type", "dress_color", "outerwear", "outerwear_color", "outerwear_wearing_style", "belt", "belt_color", "footwear", "footwear_color",
@@ -673,12 +764,11 @@ const GROUPS = [
 const SECTION_TOOLTIPS = {
     all: "Global controls affect every unlocked category. Pivot locks protect Media type, Gender, and Content rating; optional protected fields and the seed are not overwritten. Scene scenario is the deliberate exception: SET ALL RANDOM arms its ten-percent branch, while RANDOMIZE ALL ONCE resolves that same rare chance immediately.",
     composition: "Composition Archetype coordinates framing, pose, horizontal camera direction, head direction, Eye Focus, vertical camera angle, and frame placement while preserving manual and Forced Random choices. Scene scenario remains a rare mutually exclusive branch.",
-    body: "Height, weight/fitness, and silhouette are independent. Ordinary Random balances underweight, ordinary, heavier, and muscular physique families instead of overproducing average synonyms; manual and Forced Random choices remain free.",
-    body_specific: "Detailed morphology, body hair, and skin. Ordinary Random favors compatible neckline depth/type pairs 90% of the time. Body hair and skin finish stay protected from one-click randomization.",
+    body: "Complete body control in one section: archetype, demographics, height, physique, silhouette, chest, glutes, thighs, details, body hair, and skin. The archetype leads ordinary Random fields; manual and Forced Random values remain authoritative.",
     face: "Facial structure and expression. Ethnicity Guidance can constrain compatible Random traits; explicit manual values always win.",
     hair: "Hair color, texture, style, cut, length, and bangs remain combinable. Ordinary Random softens only the clearest structural clashes 75% of the time, preserving experimental undercuts and mixed constructions.",
     tattoos_makeup: "Independent tattoo, makeup, and nail controls. Random nails are silently removed when full hand-covering gloves are detected.",
-    clothes_shoes: "Main garment families are mutually exclusive for ordinary Random. Outerwear, its color, and its wearing style stay protected on global random buttons; manual and field-level Random remain available. Cosplay protection, manual choices, Forced Random, and override retain their established priority.",
+    clothes_shoes: "Main garment families are mutually exclusive for ordinary Random. Neckline is one atomic garment geometry; Neckwear is independent from jewelry. Gender prefixes are visual guidance only and remain grouped female, unisex, then male.",
     accessories: "Optional additions guided by clothing archetypes. Head accessories, glasses, armwear, bags, and scarves stay protected on global random buttons and remain available manually or through their own Random setting.",
     custom_inputs: "Reference-image captions and expanded wildcard text enter as dependency-free STRING overrides. A structured Face/Hair description fills only fields left on None or Random, above Identity Forge and Subject wildcard but below manual, Forced Random, and the universal field override. Setting/Pose text overrides lead over their matching wildcard line. Custom colors use target=value pairs.",
     override_inspection: "A connected Override text replaces the selected field after every other rule. Inspect property exposes one final resolved value through the dedicated output for overlays, comparisons, and statistics.",
@@ -687,7 +777,12 @@ const SECTION_TOOLTIPS = {
 function getLockStore(node) {
     if (!node.properties) node.properties = {};
     if (!node.properties.cpf_group_locks) node.properties.cpf_group_locks = {};
-    return node.properties.cpf_group_locks;
+    const store = node.properties.cpf_group_locks;
+    if (Object.prototype.hasOwnProperty.call(store, "body_specific")) {
+        if (store.body_specific) store.body = true;
+        delete store.body_specific;
+    }
+    return store;
 }
 
 function isGroupLocked(node, groupId) {
@@ -720,19 +815,70 @@ function concreteValues(widget) {
     const values = widget?.options?.values;
     if (!Array.isArray(values)) return [];
     return values.filter(
-        (value) => value !== "None" && value !== "Random" && value !== "Forced Random"
+        (value) => value !== "None" && value !== "Random" && value !== "Forced Random" && !ARCHETYPE_RANDOM_OPTIONS.has(value)
     );
+}
+
+function genderAwareVisibleValues(widget, values) {
+    if (!widget?.node || !Array.isArray(values)) return values;
+    const gender = canonicalChoice(widgetMap(widget.node).get("gender")?.value);
+    const tagged = (value) => /^\((female|unisex|male)\)\s+/i.exec(String(value))?.[1]?.toLowerCase();
+    if (BODY_GENDER_PROFILE_WIDGETS.has(widget.name)) {
+        if (widget.name === "body_archetype") {
+            if (["man", "male", "transgender man", "androgynous femboy"].includes(gender)) {
+                const filtered = values.filter((value) => tagged(value) === "male");
+                return filtered.length ? filtered : values;
+            }
+            if (["woman", "female", "transgender woman", "androgynous tomboy"].includes(gender)) {
+                return values.filter((value) => tagged(value) !== "male");
+            }
+        }
+        if (["man", "male", "transgender man", "androgynous femboy"].includes(gender)) {
+            return values.filter((value) => ["male", "unisex", undefined].includes(tagged(value)));
+        }
+        if (["woman", "female", "transgender woman", "androgynous tomboy"].includes(gender)) {
+            return values.filter((value) => ["female", "unisex", undefined].includes(tagged(value)));
+        }
+    }
+    if (CLOTHING_GENDER_PROFILE_WIDGETS.has(widget.name)) {
+        if (["androgynous femboy", "androgynous tomboy"].includes(gender)) return values;
+        if (widget.name === "clothing_archetype" && ["man", "male", "transgender man"].includes(gender)) {
+            const filtered = values.filter((value) => tagged(value) === "male");
+            return filtered.length ? filtered : values;
+        }
+        if (["man", "male", "transgender man"].includes(gender)) {
+            return values.filter((value) => ["male", "unisex", undefined].includes(tagged(value)));
+        }
+        if (["woman", "female", "transgender woman"].includes(gender)) {
+            return values.filter((value) => ["female", "unisex", undefined].includes(tagged(value)));
+        }
+    }
+    return values;
 }
 
 function setWidgetValue(widget, value) {
     if (!widget) return false;
-    widget.value = value;
-    widget.callback?.(value, app.canvas, widget.node, widget);
+    const allowed = widget?.options?.values;
+    let displayedValue = value;
+    if (Array.isArray(allowed) && !allowed.includes(displayedValue) && typeof value === "string") {
+        const tagged = allowed.find((candidate) =>
+            typeof candidate === "string" && candidate.replace(/^\((?:female|unisex|male)\)\s+/i, "") === value
+        );
+        if (tagged !== undefined) displayedValue = tagged;
+    }
+    widget.value = displayedValue;
+    widget.callback?.(displayedValue, app.canvas, widget.node, widget);
     return true;
 }
 
+function canonicalChoice(value) {
+    return typeof value === "string"
+        ? value.replace(/^\((?:female|unisex|male)\)\s+/i, "")
+        : value;
+}
+
 function chooseVisibleRandomValue(widget) {
-    const values = concreteValues(widget);
+    const values = genderAwareVisibleValues(widget, concreteValues(widget));
     if (!values.length) return false;
     if (widget.name === "optical_effect") {
         setWidgetValue(widget, chooseFrom(OPTICAL_EFFECT_RANDOM_POOL));
@@ -767,7 +913,7 @@ function chooseVisibleRandomValue(widget) {
         return setWidgetValue(widget, presentValues[Math.floor(Math.random() * presentValues.length)]);
     }
     if (widget.name === "outerwear_wearing_style") {
-        const outerwear = widget.node ? widgetMap(widget.node).get("outerwear")?.value : null;
+        const outerwear = widget.node ? canonicalChoice(widgetMap(widget.node).get("outerwear")?.value) : null;
         if (outerwear === "cape") {
             const capeChoices = [
                 ...Array(60).fill("Properly worn"),
@@ -808,31 +954,33 @@ function applySoftRandomCoherenceOnce(node, keySet, lockedGroupKeys) {
     const byName = widgetMap(node);
     const randomized = (key) => keySet ? keySet.has(key) : !lockedGroupKeys.has(key);
 
-    if (Math.random() < 0.90) {
-        const depthWidget = byName.get("cleavage_depth");
-        const typeWidget = byName.get("cleavage_type");
-        const compatibleTypes = NECKLINE_TYPES_BY_DEPTH.get(depthWidget?.value);
-        if (randomized("cleavage_type") && compatibleTypes?.length) {
-            setWidgetValue(typeWidget, chooseFrom(compatibleTypes));
-        } else if (randomized("cleavage_depth") && typeWidget?.value) {
-            const compatibleDepths = [...NECKLINE_TYPES_BY_DEPTH.entries()]
-                .filter(([, types]) => types.includes(typeWidget.value))
-                .map(([depth]) => depth);
-            if (compatibleDepths.length) setWidgetValue(depthWidget, chooseFrom(compatibleDepths));
-        }
-    }
-
     if (Math.random() < 0.85) {
         const typeWidget = byName.get("bottom_type");
         const lengthWidget = byName.get("bottom_length");
-        const compatibleLengths = BOTTOM_LENGTH_POOLS.get(typeWidget?.value);
+        const compatibleLengths = BOTTOM_LENGTH_POOLS.get(canonicalChoice(typeWidget?.value));
         if (randomized("bottom_length") && compatibleLengths?.length) {
             setWidgetValue(lengthWidget, chooseFrom(compatibleLengths));
         } else if (randomized("bottom_type") && lengthWidget?.value) {
-            const compatibleTypes = [...BOTTOM_LENGTH_POOLS.entries()]
-                .filter(([, lengths]) => lengths.includes(lengthWidget.value))
-                .map(([type]) => type);
-            if (compatibleTypes.length) setWidgetValue(typeWidget, chooseFrom(compatibleTypes));
+            // Preserve an already compatible archetype draw. Reverse repair
+            // is only needed when the requested length truly conflicts with
+            // the resolved type; otherwise it would replace a coherent
+            // archetype garment with an unrelated same-gender value.
+            if (!compatibleLengths?.includes(lengthWidget.value)) {
+                // The reverse length -> type repair must preserve the same
+                // gender-profile filter as the primary clothing draw. Without
+                // this second filter, a masculine long-length outfit could be
+                // rewritten to a feminine value such as "long skirt".
+                const genderAllowedBottomTypes = new Set(
+                    genderAwareVisibleValues(typeWidget, concreteValues(typeWidget))
+                        .map((value) => canonicalChoice(value))
+                );
+                const compatibleTypes = [...BOTTOM_LENGTH_POOLS.entries()]
+                    .filter(([type, lengths]) =>
+                        lengths.includes(lengthWidget.value) && genderAllowedBottomTypes.has(type)
+                    )
+                    .map(([type]) => type);
+                if (compatibleTypes.length) setWidgetValue(typeWidget, chooseFrom(compatibleTypes));
+            }
         }
     }
 
@@ -1069,6 +1217,37 @@ function prepareCompositionArchetypeOnce(byName, randomized) {
     }
 }
 
+function prepareBodyArchetypeOnce(byName, randomized) {
+    const archetype = byName.get("body_archetype")?.value;
+    if (!archetype || ["None", "Random", "Female Random", "Male Random", "Forced Random"].includes(archetype)) return;
+    if (!randomized("body_archetype")) return;
+
+    // Keep the concrete recipe visible, but return its owned controls to
+    // ordinary Random so the deterministic backend resolves one coherent body
+    // instead of turning nine independent UI draws into manual overrides.
+    for (const key of BODY_ARCHETYPE_CONTROL_KEYS) {
+        if (!randomized(key)) continue;
+        const widget = byName.get(key);
+        if (widget?.options?.values?.includes("Random")) setWidgetValue(widget, "Random");
+    }
+}
+
+function prepareClothingArchetypeOnce(byName, randomized) {
+    const archetype = byName.get("clothing_archetype")?.value;
+    if (!archetype || ["None", "Random", "Female Random", "Male Random", "Forced Random"].includes(archetype)) return;
+    if (!randomized("clothing_archetype")) return;
+
+    // A visible manual recipe remains the wardrobe authority during a one-shot
+    // randomization. Its owned controls return to ordinary Random so the
+    // backend can build one coherent outfit from that recipe rather than
+    // treating independent UI draws as higher-priority manual garments.
+    for (const key of CLOTHING_ARCHETYPE_CONTROL_KEYS) {
+        if (!randomized(key)) continue;
+        const widget = byName.get(key);
+        if (widget?.options?.values?.includes("Random")) setWidgetValue(widget, "Random");
+    }
+}
+
 function applyCosplayDetailCoherenceOnce(byName, randomized) {
     const cosplayText = ["cosplay_type", "cosplay_franchise_western", "cosplay_franchise_asian"]
         .map((key) => byName.get(key)?.value)
@@ -1089,10 +1268,9 @@ function applyCosplayDetailCoherenceOnce(byName, randomized) {
         setWidgetValue(byName.get("head_accessory"), "None");
     }
 
-    if (randomized("cleavage_type")
-        && ["halter neckline", "off-shoulder neckline"].includes(byName.get("cleavage_type")?.value)
+    if (randomized("neckline")
         && hasTerm(["jacket", "jackets", "coat", "coats", "blazer", "blazers", "uniform", "uniforms", "robe", "robes", "long sleeved", "sleeves"])) {
-        setWidgetValue(byName.get("cleavage_type"), "None");
+        setWidgetValue(byName.get("neckline"), "None");
     }
 }
 
@@ -1253,7 +1431,7 @@ function applyClothingExclusivityOnce(node, keySet) {
     }
 
     if (chosenName === "separates") {
-        const bottom = widgetsByName.get("bottom_type")?.value;
+        const bottom = canonicalChoice(widgetsByName.get("bottom_type")?.value);
         if (FULL_BODY_ONE_PIECE_BOTTOM_TYPES.has(bottom)) {
             setWidgetValue(widgetsByName.get("top_type"), "None");
             setWidgetValue(widgetsByName.get("top_color"), "None");
@@ -1299,6 +1477,8 @@ function randomizeKeysOnce(node, keys) {
     }
 
     prepareCompositionArchetypeOnce(widgetMap(node), randomized);
+    prepareBodyArchetypeOnce(widgetMap(node), randomized);
+    prepareClothingArchetypeOnce(widgetMap(node), randomized);
 
     node.setDirtyCanvas(true, true);
     app.graph.setDirtyCanvas(true, true);
@@ -1693,6 +1873,12 @@ function restoreOrderForValues(values) {
     if (values.length === CANONICAL_WIDGET_ORDER.length) {
         return CANONICAL_WIDGET_ORDER;
     }
+    if (values.length === V500_CANONICAL_WIDGET_ORDER.length) {
+        return V500_CANONICAL_WIDGET_ORDER;
+    }
+    if (values.length === V450_CANONICAL_WIDGET_ORDER.length) {
+        return V450_CANONICAL_WIDGET_ORDER;
+    }
     if (values.length === V440_CANONICAL_WIDGET_ORDER.length) {
         return V440_CANONICAL_WIDGET_ORDER;
     }
@@ -1744,7 +1930,7 @@ function restoreOrderForValues(values) {
 function isValidWidgetValue(widget, value) {
     const allowed = widget?.options?.values;
     if (!Array.isArray(allowed)) return true;
-    return allowed.includes(value);
+    return allowed.includes(value) || allowed.some((candidate) => canonicalChoice(candidate) === value);
 }
 
 function restoreValuesByName(node, values) {
@@ -1760,10 +1946,14 @@ function restoreValuesByName(node, values) {
         const widget = byName.get(restoredName);
         const rawValue = values[index];
         if (!widget || rawValue === undefined) continue;
+        if (restoredName === "composition_archetype" && LEGACY_COMPOSITION_ARCHETYPE_LABELS.has(rawValue)) {
+            setWidgetValue(widget, LEGACY_COMPOSITION_ARCHETYPE_LABELS.get(rawValue));
+            continue;
+        }
         if (restoredName === "body_feminine_curves" && LEGACY_CURVE_DETAIL_VALUES.has(rawValue)) {
             const detailWidget = byName.get("body_detail_1");
             if (detailWidget && [undefined, null, "None"].includes(detailWidget.value)) {
-                detailWidget.value = LEGACY_CURVE_DETAIL_VALUES.get(rawValue);
+                setWidgetValue(detailWidget, LEGACY_CURVE_DETAIL_VALUES.get(rawValue));
             }
             widget.value = "None";
             continue;
@@ -1829,7 +2019,7 @@ function restoreValuesByName(node, values) {
             if (Array.isArray(allowed) && allowed.includes("None")) widget.value = "None";
             continue;
         }
-        widget.value = value;
+        setWidgetValue(widget, value);
     }
 
     if (legacySelfie) {
@@ -1839,7 +2029,7 @@ function restoreValuesByName(node, values) {
         if (poseWidget && ["None", "Random"].includes(poseWidget.value)) poseWidget.value = SELFIE_POSE;
     }
 
-    if (![CANONICAL_WIDGET_ORDER, V440_CANONICAL_WIDGET_ORDER, V430_CANONICAL_WIDGET_ORDER, V420_CANONICAL_WIDGET_ORDER, V410_CANONICAL_WIDGET_ORDER, V400_CANONICAL_WIDGET_ORDER].includes(order)) {
+    if (![CANONICAL_WIDGET_ORDER, V500_CANONICAL_WIDGET_ORDER, V450_CANONICAL_WIDGET_ORDER, V440_CANONICAL_WIDGET_ORDER, V430_CANONICAL_WIDGET_ORDER, V420_CANONICAL_WIDGET_ORDER, V410_CANONICAL_WIDGET_ORDER, V400_CANONICAL_WIDGET_ORDER].includes(order)) {
         const legacyBodyTypeIndex = order.indexOf("body_type");
         const legacyBodyType = legacyBodyTypeIndex >= 0 ? values[legacyBodyTypeIndex] : undefined;
         const physiqueWidget = byName.get("body_physique");
@@ -1859,20 +2049,20 @@ function restoreValuesByName(node, values) {
             ["long-legged", "long-legged proportions"], ["long-legged proportions", "long-legged proportions"],
         ]);
         if (physiqueWidget && ["None", undefined].includes(physiqueWidget.value) && physiqueFromType.has(legacyBodyType)) {
-            physiqueWidget.value = physiqueFromType.get(legacyBodyType);
+            setWidgetValue(physiqueWidget, physiqueFromType.get(legacyBodyType));
         }
         if (curvesWidget && ["None", undefined].includes(curvesWidget.value) && curvesFromType.has(legacyBodyType)) {
-            curvesWidget.value = curvesFromType.get(legacyBodyType);
+            setWidgetValue(curvesWidget, curvesFromType.get(legacyBodyType));
         }
         if (detailWidget && ["None", undefined].includes(detailWidget.value) && detailFromType.has(legacyBodyType)) {
-            detailWidget.value = detailFromType.get(legacyBodyType);
+            setWidgetValue(detailWidget, detailFromType.get(legacyBodyType));
         }
     }
 
     // V3.0 and older compressed several independent V3.1 axes into one
     // positional widget. Re-expand those intentions only while restoring a
     // historical layout; a native V3.1 workflow already stores every axis.
-    if (![CANONICAL_WIDGET_ORDER, V440_CANONICAL_WIDGET_ORDER, V430_CANONICAL_WIDGET_ORDER, V420_CANONICAL_WIDGET_ORDER, V410_CANONICAL_WIDGET_ORDER, V400_CANONICAL_WIDGET_ORDER].includes(order)) {
+    if (![CANONICAL_WIDGET_ORDER, V450_CANONICAL_WIDGET_ORDER, V440_CANONICAL_WIDGET_ORDER, V430_CANONICAL_WIDGET_ORDER, V420_CANONICAL_WIDGET_ORDER, V410_CANONICAL_WIDGET_ORDER, V400_CANONICAL_WIDGET_ORDER].includes(order)) {
         const oldValue = (name) => {
             const index = order.indexOf(name);
             return index >= 0 && index < values.length ? values[index] : undefined;
@@ -1925,6 +2115,7 @@ function sanitizeConfiguredWidgetValues(info) {
 function emphasizeArchetypeWidget(widget) {
     if (!widget || widget._cpfArchetypeEmphasis) return;
     widget._cpfArchetypeEmphasis = true;
+    const originalMouse = typeof widget.mouse === "function" ? widget.mouse.bind(widget) : null;
     if (!widget.options) widget.options = {};
     widget.options.color = "rgba(137, 180, 255, 0.98)";
     widget.options.bgcolor = "rgba(54, 63, 82, 0.98)";
@@ -1943,6 +2134,7 @@ function emphasizeArchetypeWidget(widget) {
         const boxH = 30;
         const radius = 7;
         const value = String(widget.value ?? "None");
+        widget._cpfArchetypeWidth = width;
 
         const fittedText = (textValue, maxWidth) => {
             if (ctx.measureText(textValue).width <= maxWidth) return textValue;
@@ -1967,33 +2159,54 @@ function emphasizeArchetypeWidget(widget) {
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        ctx.fillStyle = "rgba(151, 190, 255, 1)";
+        const arrowY = boxY + boxH / 2;
+        const leftArrowX = margin + 16;
+        const rightArrowX = width - margin - 16;
+        ctx.strokeStyle = "#dce8ff";
+        ctx.lineWidth = 2.2;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
         ctx.beginPath();
-        ctx.roundRect(margin + 5, boxY + 6, 4, boxH - 12, 2);
-        ctx.fill();
+        ctx.moveTo(leftArrowX + 4, arrowY - 6);
+        ctx.lineTo(leftArrowX - 3, arrowY);
+        ctx.lineTo(leftArrowX + 4, arrowY + 6);
+        ctx.moveTo(rightArrowX - 4, arrowY - 6);
+        ctx.lineTo(rightArrowX + 3, arrowY);
+        ctx.lineTo(rightArrowX - 4, arrowY + 6);
+        ctx.stroke();
 
         ctx.textBaseline = "middle";
         ctx.textAlign = "left";
         ctx.fillStyle = "#ffffff";
         ctx.font = "800 14px Inter, Arial, sans-serif";
-        ctx.fillText(label, margin + 17, boxY + boxH / 2);
+        ctx.fillText(label, margin + 34, boxY + boxH / 2);
 
         const valueX = Math.max(275, width * 0.40);
-        const valueWidth = Math.max(60, width - valueX - 34);
+        const valueWidth = Math.max(60, width - valueX - 48);
         ctx.font = "600 13px Inter, Arial, sans-serif";
         ctx.fillStyle = value === "None" ? "rgba(210, 218, 232, 0.78)" : "#f7f9ff";
         ctx.fillText(fittedText(value, valueWidth), valueX, boxY + boxH / 2);
 
-        const arrowX = width - margin - 16;
-        const arrowY = boxY + boxH / 2;
-        ctx.fillStyle = "#dce8ff";
-        ctx.beginPath();
-        ctx.moveTo(arrowX - 5, arrowY - 3);
-        ctx.lineTo(arrowX + 5, arrowY - 3);
-        ctx.lineTo(arrowX, arrowY + 4);
-        ctx.closePath();
-        ctx.fill();
         ctx.restore();
+    };
+    widget.mouse = (event, pos, targetNode) => {
+        if (event.type === "pointerdown" || event.type === "mousedown") {
+            const width = widget._cpfArchetypeWidth || targetNode?.size?.[0] || 0;
+            const x = pos?.[0] ?? -1;
+            const direction = x <= 38 ? -1 : x >= width - 38 ? 1 : 0;
+            if (direction) {
+                const values = Array.isArray(widget?.options?.values) ? widget.options.values : [];
+                if (values.length) {
+                    const current = values.indexOf(widget.value);
+                    const next = (Math.max(0, current) + direction + values.length) % values.length;
+                    setWidgetValue(widget, values[next]);
+                    targetNode?.setDirtyCanvas?.(true, true);
+                    app.graph?.setDirtyCanvas?.(true, true);
+                }
+                return true;
+            }
+        }
+        return originalMouse ? originalMouse(event, pos, targetNode) : false;
     };
 }
 
@@ -2001,6 +2214,9 @@ const CUSTOM_WIDGET_LABELS = new Map([
     ["media_type", "media_type"],
     ["eye_focus", "eye_focus"],
     ["mouth_expression", "mouth_expression"],
+    ["neckline", "neckline"],
+    ["neckwear", "neckwear"],
+    ["sleeve_length", "sleeve_length"],
     ["enforce_portrait_framing", "enforce_portrait_framing"],
     ["setting_text_override", "setting_text_override"],
     ["pose_text_override", "pose_text_override"],
@@ -2021,16 +2237,49 @@ function applyCustomWidgetLabel(widget) {
     widget.options.label = label;
 }
 
+function concealLegacyWidget(widget) {
+    if (!widget || widget._cpfHiddenLegacy) return;
+    widget._cpfHiddenLegacy = true;
+    widget.hidden = true;
+    widget.computeSize = () => [0, -4];
+    widget.draw = () => {};
+}
+
 function reorderWidgets(node) {
     dedupeWidgetsByName(node);
+    const currentSections = new Map(
+        (node.widgets || [])
+            .filter(isSectionWidget)
+            .map((widget) => [String(widget.name || "").replace(/^cpf_section_/, ""), widget]),
+    );
     const widgets = (node.widgets || []).filter((widget) => !isSectionWidget(widget));
     const byName = new Map(widgets.filter((w) => w?.name).map((w) => [w.name, w]));
     for (const widget of widgets) applyCustomWidgetLabel(widget);
+    for (const key of LEGACY_HIDDEN_WIDGET_KEYS) concealLegacyWidget(byName.get(key));
     emphasizeArchetypeWidget(byName.get("composition_archetype"));
     emphasizeArchetypeWidget(byName.get("body_archetype"));
     emphasizeArchetypeWidget(byName.get("clothing_archetype"));
+    const cachedSections = node._cpfSectionWidgets instanceof Map
+        ? node._cpfSectionWidgets
+        : new Map();
     const sectionWidgets = new Map();
-    for (const group of GROUPS) sectionWidgets.set(group.id, createSectionWidget(node, group));
+    for (const group of GROUPS) {
+        let section = currentSections.get(group.id) || cachedSections.get(group.id);
+        if (!section) {
+            section = createSectionWidget(node, group);
+            // Frontend 1.55+ renders from the widget-value store rather than
+            // directly from node.widgets. addCustomWidget assigns a widgetId
+            // and registers the section before the final order is committed.
+            if (typeof node.addCustomWidget === "function") {
+                node.addCustomWidget(section);
+            } else {
+                if (!Array.isArray(node.widgets)) node.widgets = [];
+                node.widgets.push(section);
+            }
+        }
+        sectionWidgets.set(group.id, section);
+    }
+    node._cpfSectionWidgets = sectionWidgets;
 
     const ordered = [sectionWidgets.get("all")];
     for (const key of [
@@ -2071,7 +2320,7 @@ function scheduleReorder(node) {
 }
 
 app.registerExtension({
-    name: "CharacterArchitect.Sections.v26",
+    name: "CharacterArchitect.Sections.v28",
     async beforeRegisterNodeDef(nodeType, nodeData) {
         if (nodeData.name !== "CharacterPromptFactory") return;
 
@@ -2100,15 +2349,23 @@ app.registerExtension({
         };
 
         nodeType.prototype.serialize = function () {
-            const originalWidgets = this.widgets;
-            this.widgets = (originalWidgets || []).filter((widget) => !isSectionWidget(widget));
-            try {
-                const data = originalSerialize?.apply(this, arguments) || {};
-                data.widgets_values = valuesInOrder(this, CANONICAL_WIDGET_ORDER);
-                return data;
-            } finally {
-                this.widgets = originalWidgets;
-            }
+            // Section widgets already declare options.serialize=false. Never
+            // remove and restore them around autosave: on the new reactive
+            // frontend that temporary reorder is observable and can make the
+            // UI sections disappear a few seconds after node creation.
+            const data = originalSerialize?.apply(this, arguments) || {};
+            data.widgets_values = valuesInOrder(this, CANONICAL_WIDGET_ORDER);
+            return data;
         };
+    },
+    nodeCreated(node) {
+        if (node?.comfyClass === "CharacterPromptFactory" || node?.type === "CharacterPromptFactory") {
+            scheduleReorder(node);
+        }
+    },
+    loadedGraphNode(node) {
+        if (node?.comfyClass === "CharacterPromptFactory" || node?.type === "CharacterPromptFactory") {
+            scheduleReorder(node);
+        }
     },
 });
